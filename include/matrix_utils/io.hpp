@@ -13,6 +13,27 @@
 namespace matrix_utils {
 namespace io {
 
+    template <typename T>
+    void printBCSRRaw(BCSRMatrix<T>& mat) {
+        std::cout << "row ptrs: [";
+        for (const auto& row : mat.bcsr_row_ptr) {
+            std::cout << " " << row;
+        }
+        std::cout << "]" << std::endl;
+
+        std::cout << "col indices: [";
+        for (const auto& col : mat.bcsr_col_ind) {
+            std::cout << " " << col;
+        }
+        std::cout << "]" << std::endl;
+
+        std::cout << "vals : [" << std::endl;
+        for (const auto& val : mat.bcsr_values) {
+            std::cout << " " << val;
+        }
+        std::cout << "]" << std::endl;
+    }
+
     // -----------------------------------------------------------------
     // Helper to print a single value safely (handles int8_t chars and __half)
     // -----------------------------------------------------------------
