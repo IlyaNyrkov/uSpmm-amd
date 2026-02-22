@@ -1,0 +1,2 @@
+add_executable(benchmark_spmm benchmark_spmm.hip)
+target_link_libraries(benchmark_spmm PRIVATE uspmm_lib roc::hipsparse)

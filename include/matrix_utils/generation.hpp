@@ -256,5 +256,18 @@ namespace generation {
         return mat;
     }
 
+    // -----------------------------------------------------------------
+    // Generate 1D Dense Matrix (Row-Major)
+    // -----------------------------------------------------------------
+    template <typename T>
+    std::vector<T> generate_dense(int rows, int cols, int seed = 42) {
+        std::mt19937 rng(seed);
+        std::vector<T> mat(rows * cols);
+        for (int i = 0; i < rows * cols; ++i) {
+            mat[i] = get_val<T>(rng);
+        }
+        return mat;
+    }
+
 } // namespace generation
 } // namespace matrix_utils
