@@ -1,6 +1,3 @@
-# tests/CMakeLists.txt
-
-# Fetch GoogleTest automatically
 include(FetchContent)
 FetchContent_Declare(
         googletest

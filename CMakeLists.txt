@@ -16,10 +16,10 @@ find_package(ROCM REQUIRED)
 find_path(ROCWMMA_INCLUDE_DIR NAMES rocwmma/rocwmma.hpp)
 
 # 4. Create the main library
-# (Ensure you have a dummy or actual src/uspmm/spmm_rocwmma.hip file,
+# (Ensure you have a dummy or actual src/uspmm/spmm_rocwmma.hip.cpp file,
 # otherwise CMake will complain about missing source files)
 add_library(uspmm_lib STATIC
-        src/uspmm/spmm_rocwmma.hip
+        src/uspmm/spmm_rocwmma.hip.cpp
 )
 
 # 5. Configure Includes
@@ -35,3 +35,5 @@ add_subdirectory(tests)
 
 # add_executable(example_uspmm examples/example_uspmm.cpp)
 # target_link_libraries(example_uspmm PRIVATE uspmm_lib)
+
+add_subdirectory(examples)
