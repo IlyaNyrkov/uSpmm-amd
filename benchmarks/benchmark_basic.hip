@@ -10,15 +10,16 @@
 #include "matrix_utils/conversion.hpp"
 #include "uspmm/clustering.hpp"
 #include "uspmm/spmm_rocwmma.hpp"
+#include <rocwmma/rocwmma.hpp>
 
 #define HIP_CHECK(expr) { hipError_t err = (expr); if (err != hipSuccess) { std::cerr << "HIP Error: " << hipGetErrorString(err) << "\n"; exit(1); } }
 #define HIPSPARSE_CHECK(expr) { hipsparseStatus_t err = (expr); if (err != HIPSPARSE_STATUS_SUCCESS) { std::cerr << "hipSPARSE Error\n"; exit(1); } }
 
+
 int main() {
-    // Use a larger matrix to properly saturate the GPU for benchmarking
-    int M = 2048;
-    int K = 2048;
-    int N = 2048;
+    int M = 16384;
+    int K = 16384;
+    int N = 16384;
 
     std::cout << "--- Initialization ---\n";
     //auto mat_A_csr = matrix_utils::generation::generate_checkers<__half>(M, K, 4);
@@ -30,8 +31,8 @@ int main() {
     // 1. Benchmark: CPU Clustering
     // ---------------------------------------------------------
     std::cout << "--- Benchmarking CPU Clustering ---\n";
-    int warmup_runs = 3;
-    int timed_runs = 10;
+    int warmup_runs = 0;
+    int timed_runs = 1;
 
     // Warmup
     for (int i = 0; i < warmup_runs; ++i) {
