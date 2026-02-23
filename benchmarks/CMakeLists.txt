@@ -1,2 +1,11 @@
-add_executable(benchmark_spmm benchmark_spmm.hip)
-target_link_libraries(benchmark_spmm PRIVATE uspmm_lib roc::hipsparse)
+add_executable(benchmark_basic benchmark_basic.hip)
+target_link_libraries(benchmark_basic PRIVATE uspmm_lib roc::hipsparse)
+
+add_executable(benchmark_mtx_files benchmark_mtx_files.hip)
+target_link_libraries(benchmark_mtx_files PRIVATE uspmm_lib roc::hipsparse)
+
+add_executable(benchmark_synthetic_matrices benchmark_synthetic_matrices.hip)
+target_link_libraries(benchmark_synthetic_matrices PRIVATE uspmm_lib roc::hipsparse)
+
+add_executable(benchmark_shuffled_synthetic_matrices benchmark_shuffled_synthetic_matrices.hip)
+target_link_libraries(benchmark_shuffled_synthetic_matrices PRIVATE uspmm_lib roc::hipsparse)
